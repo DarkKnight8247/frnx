@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FrnxApp.Views.MainPage"
+             Title="FrnxApp Feed">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add New" Command="{Binding AddCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView Command="{Binding LoadCommand}">
+
+        <CollectionView ItemsSource="{Binding Posts}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Margin="10"
+                            StrokeShape="RoundRectangle 10"
+                            BackgroundColor="White"
+                            Padding="10">
+
+                        <HorizontalStackLayout Spacing="20">
+
+                            <VerticalStackLayout WidthRequest="200">
+
+                                <Label Text="{Binding Title}"
+                                       FontAttributes="Bold" />
+
+                                <Label Text="{Binding Content}"
+                                       TextColor="Gray" />
+
+                            </VerticalStackLayout>
+
+                            <Button Text="DEL"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCommand}"
+                                    CommandParameter="{Binding}" />
+
+                        </HorizontalStackLayout>
+
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </RefreshView>
+
+</ContentPage>

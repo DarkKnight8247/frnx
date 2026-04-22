@@ -1,0 +1,6 @@
+@FrnxApi_HostAddress = http://localhost:5139
+
+GET {{FrnxApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
